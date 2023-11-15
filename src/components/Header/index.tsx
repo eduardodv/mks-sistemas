@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { Cart, HeaderContainer, Logo, Container, Icon } from './styles'
+import { CartButton, HeaderContainer, Logo, Container, Icon } from './styles'
 import cartIcon from '../../assets/cartIcon.svg'
+import * as Dialog from '@radix-ui/react-dialog'
+import { Cart } from '../Cart'
 
 export function Header() {
   const totalItemsInCart = 0
@@ -30,10 +32,15 @@ export function Header() {
             <span>MKS</span> Sistemas
           </Logo>
         </NavLink>
-        <Cart>
-          <Icon src={cartIcon} alt="Cart icon" />
-          <span>{totalItemsInCart}</span>
-        </Cart>
+        <Dialog.Root>
+          <Dialog.Trigger asChild>
+            <CartButton>
+              <Icon src={cartIcon} alt="Cart icon" />
+              <span>{totalItemsInCart}</span>
+            </CartButton>
+          </Dialog.Trigger>
+          <Cart />
+        </Dialog.Root>
       </Container>
     </HeaderContainer>
   )
