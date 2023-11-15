@@ -13,7 +13,7 @@ export const defaultTheme = {
     'gray-400': '#EEEEEE',
     'gray-500': '#BFBFBF',
 
-    'error-500': '#FAA2A2',
+    'error-500': '#C10015',
     'success-500': '#21BA45',
     'warining-500': '#F2C037',
   },

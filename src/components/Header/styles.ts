@@ -73,7 +73,7 @@ export const Icon = styled.img`
   }
 `
 
-export const Cart = styled.button`
+export const CartButton = styled.button`
   min-width: 5.625rem;
   display: flex;
   align-items: center;
@@ -88,7 +88,8 @@ export const Cart = styled.button`
   color: ${(props) => props.theme.colors.black};
   background: ${(props) => props.theme.colors.white};
 
-  &:hover {
+  &:hover,
+  &[aria-expanded='true'] {
     color: ${(props) => props.theme.colors.white};
     background: ${(props) => props.theme.colors.black};
 
