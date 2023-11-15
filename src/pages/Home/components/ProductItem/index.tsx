@@ -12,6 +12,8 @@ import {
   Content,
   CartIcon,
 } from './styles'
+import { useContext } from 'react'
+import { CartItemContext } from '../../../../contexts/CartItemContext'
 
 export interface ProductItemProps {
   id: number
@@ -19,17 +21,32 @@ export interface ProductItemProps {
   brand: string
   description: string
   photo: string
-  price: number
+  price: string
 }
 
 export function ProductItem({
-  // id,
+  id,
   name,
   brand,
   description,
   photo,
   price,
 }: ProductItemProps) {
+  const { addToCart } = useContext(CartItemContext)
+
+  function handleAddToCart() {
+    const itemToAdd = {
+      id,
+      name,
+      brand,
+      description,
+      photo,
+      price,
+      quantity: 1,
+    }
+    addToCart(itemToAdd)
+  }
+
   return (
     <ProductItemContainer>
       <ImageContainer>
@@ -40,11 +57,11 @@ export function ProductItem({
           <Title>
             {brand} {name}
           </Title>
-          <Price>R${formatMoney(price)}</Price>
+          <Price>R${formatMoney(Number(price))}</Price>
         </HeaderProduct>
         <Description>{description}</Description>
       </Content>
-      <AddToCart>
+      <AddToCart onClick={handleAddToCart}>
         <CartIcon src={cartIconProduct} alt="Cart icon" />
         Comprar
       </AddToCart>
