@@ -1,12 +1,13 @@
 import { NavLink } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { CartButton, HeaderContainer, Logo, Container, Icon } from './styles'
 import cartIcon from '../../assets/cartIcon.svg'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Cart } from '../Cart'
+import { CartItemContext } from '../../contexts/CartItemContext'
 
 export function Header() {
-  const totalItemsInCart = 0
+  const { totalItemsInCart } = useContext(CartItemContext)
 
   const [sticky, setSticky] = useState('')
 
