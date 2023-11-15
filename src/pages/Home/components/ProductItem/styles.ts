@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const ProductItemContainer = styled.div`
-  max-width: 16.875rem;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -10,7 +10,12 @@ export const ProductItemContainer = styled.div`
   padding-bottom: 2rem;
   position: relative;
   background-color: ${(props) => props.theme.colors.white};
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.13);
+  box-shadow: 0 2px 0.5rem rgba(0, 0, 0, 0.13);
+
+  @media (max-width: 575.98px) {
+    width: auto;
+    max-width: 16.875rem;
+  }
 `
 
 export const ImageContainer = styled.div`
