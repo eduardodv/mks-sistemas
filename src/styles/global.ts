@@ -7,14 +7,6 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  :focus {
-    outline: 0;
-  }
-
-  :focus-visible {
-    box-shadow: 0 0 0 2px #ccc;
-  }
-
   html {
     min-height: 100svh;
   }
@@ -26,6 +18,7 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1.2;
     position: relative;
     padding-bottom: 2.125rem;
+    background-color: ${(props) => props.theme.colors.background};
 
     &::-webkit-scrollbar {
       width: 8px;
