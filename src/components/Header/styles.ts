@@ -50,7 +50,7 @@ export const Logo = styled.h1`
 
   @media (hover: hover) {
     &:hover {
-      transform: translateX(10px);
+      margin-left: 10px;
     }
   }
 

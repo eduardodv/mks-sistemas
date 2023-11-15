@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import {
   ButtonMinus,
   ButtonPlus,
@@ -12,29 +13,71 @@ import {
   Title,
   TotalPrice,
 } from './styles'
+import { CartItemContext } from '../../contexts/CartItemContext'
+import { formatMoney } from '../../utils/formatMoney'
+import * as AlertDialogRadix from '@radix-ui/react-alert-dialog'
+import { AlertDialog } from '../AlertDialog'
 
-export function CartItem() {
+interface ProductCartProps {
+  id: number
+  name: string
+  brand: string
+  photo: string
+  price: string
+  quantity: number
+}
+
+export function CartItem({
+  id,
+  name,
+  brand,
+  photo,
+  price,
+  quantity,
+}: ProductCartProps) {
+  const { removeToCart, changeQuantityCartItem } = useContext(CartItemContext)
+
+  function handleRemoveToCart() {
+    removeToCart(id)
+  }
+
+  function handleIncrementQuantity() {
+    changeQuantityCartItem(id, 'increment')
+  }
+
+  function handleDecrementQuantity() {
+    changeQuantityCartItem(id, 'decrement')
+  }
+
   return (
     <CartItemContainer>
       <ImageContainer>
-        <Image
-          src="https://mks-sistemas.nyc3.digitaloceanspaces.com/products/macbookair.webp"
-          alt=""
-        />
+        <Image src={photo} alt="" />
       </ImageContainer>
-      <Title>Apple Watch Series 4 GPS</Title>
+      <Title>
+        {brand} {name}
+      </Title>
       <Flex>
         <NumberCount>
           <Label>Qtd.</Label>
           <div>
-            <ButtonMinus>-</ButtonMinus>
-            <Quantity>1</Quantity>
-            <ButtonPlus>+</ButtonPlus>
+            <ButtonMinus onClick={handleDecrementQuantity}>-</ButtonMinus>
+            <Quantity>{quantity}</Quantity>
+            <ButtonPlus onClick={handleIncrementQuantity}>+</ButtonPlus>
           </div>
         </NumberCount>
-        <TotalPrice>R$399</TotalPrice>
+        <TotalPrice>R${formatMoney(Number(price) * quantity)}</TotalPrice>
       </Flex>
-      <CloseButton title="Remover">x</CloseButton>
+
+      <AlertDialogRadix.Root>
+        <AlertDialogRadix.Trigger asChild>
+          <CloseButton title="Remover">x</CloseButton>
+        </AlertDialogRadix.Trigger>
+        <AlertDialog
+          title="Tem certeza que deseja remover o item do carrinho?"
+          actionButton={handleRemoveToCart}
+        />
+      </AlertDialogRadix.Root>
     </CartItemContainer>
   )
 }
