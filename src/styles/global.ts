@@ -32,4 +32,8 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-size: 1rem;
   }
+
+  a, button {
+    transition: all 0.2s ease;
+  }
 `
