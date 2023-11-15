@@ -14,6 +14,9 @@ interface CartItemContextType {
   cartItems: CartItem[]
   totalItemsInCart: number
   addToCart: (item: CartItem) => void
+  removeToCart: (id: number) => void
+  changeQuantityCartItem: (id: number, type: 'increment' | 'decrement') => void
+  resetCart: () => void
 }
 
 interface CartItemContextProviderProps {
@@ -26,8 +29,6 @@ export function CartItemContextProvider({
   children,
 }: CartItemContextProviderProps) {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
-
-  console.log(cartItems)
 
   const totalItemsInCart = cartItems.length
 
@@ -46,12 +47,52 @@ export function CartItemContextProvider({
     }
   }
 
+  function removeToCart(id: number) {
+    const updateItemsWithoutRemovedItem = cartItems.filter(
+      (item) => item.id !== id,
+    )
+    setCartItems(updateItemsWithoutRemovedItem)
+  }
+
+  function changeQuantityCartItem(id: number, type: 'increment' | 'decrement') {
+    const alreadyExistsInCart = cartItems.findIndex(
+      (cartItem) => cartItem.id === id,
+    )
+
+    if (alreadyExistsInCart >= 0) {
+      const updatedItems = [...cartItems]
+      const item = updatedItems[alreadyExistsInCart]
+
+      switch (type) {
+        case 'increment':
+          item.quantity = item.quantity + 1
+          break
+        case 'decrement':
+          if (item.quantity > 1) {
+            item.quantity = item.quantity - 1
+          }
+          break
+        default:
+          return updatedItems
+      }
+
+      setCartItems(updatedItems)
+    }
+  }
+
+  function resetCart() {
+    setCartItems([])
+  }
+
   return (
     <CartItemContext.Provider
       value={{
         cartItems,
         totalItemsInCart,
         addToCart,
+        removeToCart,
+        changeQuantityCartItem,
+        resetCart,
       }}
     >
       {children}

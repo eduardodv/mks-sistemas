@@ -79,6 +79,7 @@ export const ListItems = styled.div`
   flex-direction: column;
   gap: 1.375rem;
   max-height: calc(100svh - 340px);
+  min-height: 160px;
   overflow: auto;
   padding: 0.3rem 0.9rem 0.3rem 0;
   margin-right: -1.3rem;
@@ -134,5 +135,15 @@ export const FinalizeButton = styled.button`
     font-size: 20px;
     padding-top: 1.3rem;
     padding-bottom: 1.3rem;
+  }
+`
+
+export const ErrorMessage = styled.div`
+  padding: 15px 20px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+
+  h4 {
+    margin-bottom: 0.625rem;
   }
 `
