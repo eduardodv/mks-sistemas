@@ -7,6 +7,7 @@ export const defaultTheme = {
     'base-label': '#373737',
 
     'blue-500': '#0F52BA',
+    'blue-600': '#003a95',
 
     'gray-400': '#EEEEEE',
     'gray-500': '#BFBFBF',
