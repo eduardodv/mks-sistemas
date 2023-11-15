@@ -1,7 +1,7 @@
 export const defaultTheme = {
   colors: {
     white: '#FFFFFF',
-    baclk: '#000000',
+    black: '#000000',
 
     'base-text': '#2C2C2C',
     'base-label': '#373737',
@@ -34,4 +34,4 @@ export const defaultTheme = {
     'button-m': '18px',
     'button-s': '14px',
   },
-}
+} as const
