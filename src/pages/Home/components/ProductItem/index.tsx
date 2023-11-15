@@ -14,6 +14,8 @@ import {
 } from './styles'
 import { useContext } from 'react'
 import { CartItemContext } from '../../../../contexts/CartItemContext'
+import toast from 'react-hot-toast'
+import { Toast } from '../../../../components/Toast'
 
 export interface ProductItemProps {
   id: number
@@ -45,6 +47,23 @@ export function ProductItem({
       quantity: 1,
     }
     addToCart(itemToAdd)
+    const boldTitle = `${brand} ${name}`
+    toast.success(
+      (t) => (
+        <Toast
+          id={t.id}
+          boldTitle={boldTitle}
+          title="adicionado ao carrinho!"
+          isDismissible
+        />
+      ),
+      {
+        duration: 3000,
+        style: {
+          maxWidth: 500,
+        },
+      },
+    )
   }
 
   return (

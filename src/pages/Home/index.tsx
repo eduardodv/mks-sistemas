@@ -4,6 +4,8 @@ import { useQuery } from 'react-query'
 import axios from 'axios'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { Toaster, toast } from 'react-hot-toast'
+import { useEffect } from 'react'
 
 interface ProductProps {
   id: number
@@ -22,6 +24,10 @@ export function Home() {
       )
       .then((response) => response.data)
   })
+
+  useEffect(() => {
+    toast.remove()
+  }, [])
 
   return (
     <main>
@@ -53,6 +59,7 @@ export function Home() {
           })
         )}
       </ListProducts>
+      <Toaster position="bottom-right" />
     </main>
   )
 }
