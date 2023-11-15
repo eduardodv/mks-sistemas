@@ -10,7 +10,7 @@ export const HeaderContainer = styled.header`
   transition: all 0.2s ease;
   z-index: 999;
   &.is-sticky {
-    margin-top: 1rem;
+    margin-top: 2rem;
     padding: 0.5rem 0;
     box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.3);
   }
