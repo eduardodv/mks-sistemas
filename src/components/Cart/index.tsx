@@ -18,7 +18,7 @@ import * as AlertDialogRadix from '@radix-ui/react-alert-dialog'
 import { AlertDialog } from '../AlertDialog'
 
 export function Cart() {
-  const { cartItems, resetCart } = useContext(CartItemContext)
+  const { cartItems, resetCart, setOpen } = useContext(CartItemContext)
 
   const totalPrice = cartItems.reduce(
     (acc, item) => acc + Number(item.price) * item.quantity,
@@ -27,6 +27,7 @@ export function Cart() {
 
   function handleSuccess() {
     resetCart()
+    setOpen(false)
   }
 
   return (
