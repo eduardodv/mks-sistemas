@@ -17,6 +17,8 @@ interface CartItemContextType {
   removeToCart: (id: number) => void
   changeQuantityCartItem: (id: number, type: 'increment' | 'decrement') => void
   resetCart: () => void
+  open: boolean
+  setOpen: (value: boolean) => void
 }
 
 interface CartItemContextProviderProps {
@@ -29,6 +31,7 @@ export function CartItemContextProvider({
   children,
 }: CartItemContextProviderProps) {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const [open, setOpen] = useState(false)
 
   const totalItemsInCart = cartItems.length
 
@@ -93,6 +96,8 @@ export function CartItemContextProvider({
         removeToCart,
         changeQuantityCartItem,
         resetCart,
+        open,
+        setOpen,
       }}
     >
       {children}

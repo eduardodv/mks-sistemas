@@ -7,7 +7,7 @@ import { Cart } from '../Cart'
 import { CartItemContext } from '../../contexts/CartItemContext'
 
 export function Header() {
-  const { totalItemsInCart } = useContext(CartItemContext)
+  const { totalItemsInCart, open, setOpen } = useContext(CartItemContext)
 
   const [sticky, setSticky] = useState('')
 
@@ -33,7 +33,7 @@ export function Header() {
             <span>MKS</span> Sistemas
           </Logo>
         </NavLink>
-        <Dialog.Root>
+        <Dialog.Root open={open} onOpenChange={setOpen}>
           <Dialog.Trigger asChild>
             <CartButton>
               <Icon src={cartIcon} alt="Cart icon" />
