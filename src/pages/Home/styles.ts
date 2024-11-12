@@ -27,3 +27,12 @@ export const ListProducts = styled.div`
     padding-bottom: 7.25rem;
   }
 `
+
+export const ResponseError = styled.div`
+  max-width: 1000px;
+  margin: auto;
+  padding: 4.375rem 1.25rem;
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+`
