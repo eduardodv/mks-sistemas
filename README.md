@@ -1,27 +1,28 @@
-# React + TypeScript + Vite
+# MKS Sistemas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**MKS Sistemas - ecommerce** desenvolvido em React + TypeScript + Vite para o processo seletivo da empresa MKS Sistemas.
 
-Currently, two official plugins are available:
+**Objetivos do desafio:**
+- [x] Criar um ecommerce onde houvesse a comunicação com a API (_atualmente inativa e substituida por um arquivo JSON_);
+- [x] Listar os produtos na página inicial através dessa comunicação;
+- [x] Incluir os itens no carrinho.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**:warning:Não era necessário finalizar a compra e enviar um payload pois a API fornecia apenas um GET dos produtos.**
 
-## Expanding the ESLint configuration
+## Para complementar o desafio foram utilizados
+- [React Hot Toast](https://react-hot-toast.com/) para as notificações em tempo real;
+- [Radix UI](https://www.radix-ui.com/) para criar um dialog modal acessível e livre de estilizações pré definidas;
+- [React Loading Skeleton](https://github.com/dvtng/react-loading-skeleton) para manter uma estrutura de loading do componente antes do carregamento completo.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Como instalar
 
-- Configure the top-level `parserOptions` property like this:
+### `npm i`
+Instala os pacotes.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+### `npm run dev`
+Inicia o projeto por padrão no caminho http://localhost:5173
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Demo
+[Link](https://mks-sistemas-tau.vercel.app/)
+
+![gif05](https://github.com/user-attachments/assets/42fa8afb-ca4d-412b-be87-421d0662e6f0)
